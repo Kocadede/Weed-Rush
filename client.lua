@@ -36,9 +36,24 @@ RegisterNetEvent('kcdd_weed:ufala')
 AddEventHandler('kcdd_weed:ufala', function()
 	TriggerEvent("animation:ufala")
 	local finished = exports["xx-taskbar"]:taskBar(7500,"Ufalıyorsun",false,false) 
-	if (finished == 100) then
-		TriggerServerEvent("kcdd:ufala")
-	end
+		exports['mythic_progbar']:Progress({
+		name = "xxxx",
+		duration = 7500,
+		label = 'Ufalıyorsun',
+		useWhileDead = false,
+		canCancel = false,
+		controlDisables = {
+			disableMovement = true,
+			disableCarMovement = true,
+			disableMouse = false,
+			disableCombat = true,
+		},
+		}, function(cancelled)
+		if not cancelled then
+			TriggerServerEvent("kcdd:ufala")
+		end
+	end)
+		
 end)
 ------------------------------------------------------------------------Kurutma------------------------------------------------------------------------
 RegisterNetEvent('kcdd_weed:kurut')
