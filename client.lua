@@ -71,10 +71,23 @@ end)
 RegisterNetEvent('kcdd_weed:sar')
 AddEventHandler('kcdd_weed:sar', function()
 	local finished = exports["xx-taskbar"]:taskBar(7500,"Sarıyorsun",false,false) 
-	if (finished == 100) then
-		TriggerServerEvent("kcdd_weed:sar")
-	end
-
+	exports['mythic_progbar']:Progress({
+				name = "xxxx",
+				duration = 7500,
+				label = 'Ot Topluyorsun',
+				useWhileDead = false,
+				canCancel = false,
+				controlDisables = {
+					disableMovement = true,
+					disableCarMovement = true,
+					disableMouse = false,
+					disableCombat = true,
+				},
+				}, function(cancelled)
+					if not cancelled then
+						TriggerServerEvent("kcdd_weed:sar")
+					end
+				end)
 end)
 --------------------------------------------ANİMATİON--------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent('animation:ufala')
