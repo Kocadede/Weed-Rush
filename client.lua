@@ -8,7 +8,7 @@ Citizen.CreateThread(function()
 		if IsControlJustPressed(1, 38) and IsPedInAnyVehicle(GetPlayerPed(-1), false) ~= 1 then
 			if GetDistanceBetweenCoords(PlayerPos, 2221.7973632813,5577.0966796875,53.844783782959, true) <= 10 then		
 				TaskStartScenarioInPlace(PlayerPedId(), 'world_human_gardener_plant', -1, false)
-				local finished = exports["np-taskbar"]:taskBar(7500,"Ot Topluyorsun",false,false) 
+				local finished = exports["xx-taskbar"]:taskBar(7500,"Ot Topluyorsun",false,false) 
 				if (finished == 100) then
 					TriggerServerEvent("kcdd_weed:test")
 				end
@@ -20,7 +20,7 @@ end)
 RegisterNetEvent('kcdd_weed:ufala')
 AddEventHandler('kcdd_weed:ufala', function()
 	TriggerEvent("animation:ufala")
-	local finished = exports["np-taskbar"]:taskBar(7500,"Ufalıyorsun",false,false) 
+	local finished = exports["xx-taskbar"]:taskBar(7500,"Ufalıyorsun",false,false) 
 	if (finished == 100) then
 		TriggerServerEvent("kcdd:ufala")
 	end
@@ -31,7 +31,7 @@ AddEventHandler('kcdd_weed:kurut', function()
 	local PlayerPos = GetEntityCoords(PlayerPedId())
 	if GetDistanceBetweenCoords(PlayerPos, 3824.611, 4442.358, 2.8053, true) <= 15 then					
 		TriggerEvent("animation:kurut")
-		local finished = exports["np-taskbar"]:taskBar(7500,"Kurutuyorsun",false,false) 
+		local finished = exports["xx-taskbar"]:taskBar(7500,"Kurutuyorsun",false,false) 
 		if (finished == 100) then
 			TriggerServerEvent("kcdd:kurut")
 		end
@@ -40,7 +40,7 @@ end)
 ----------------------------------------------Sarma----------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent('kcdd_weed:sar')
 AddEventHandler('kcdd_weed:sar', function()
-	local finished = exports["np-taskbar"]:taskBar(7500,"Sarıyorsun",false,false) 
+	local finished = exports["xx-taskbar"]:taskBar(7500,"Sarıyorsun",false,false) 
 	if (finished == 100) then
 		TriggerServerEvent("kcdd_weed:sar")
 	end
