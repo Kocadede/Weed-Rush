@@ -61,10 +61,23 @@ AddEventHandler('kcdd_weed:kurut', function()
 	local PlayerPos = GetEntityCoords(PlayerPedId())
 	if GetDistanceBetweenCoords(PlayerPos, 3824.611, 4442.358, 2.8053, true) <= 15 then					
 		TriggerEvent("animation:kurut")
-		local finished = exports["xx-taskbar"]:taskBar(7500,"Kurutuyorsun",false,false) 
-		if (finished == 100) then
-			TriggerServerEvent("kcdd:kurut")
-		end
+	exports['mythic_progbar']:Progress({
+				name = "xxxx",
+				duration = 7500,
+				label = 'Kurutuyorsun',
+				useWhileDead = false,
+				canCancel = false,
+				controlDisables = {
+					disableMovement = true,
+					disableCarMovement = true,
+					disableMouse = false,
+					disableCombat = true,
+				},
+				}, function(cancelled)
+					if not cancelled then
+						TriggerServerEvent("kcdd:kurut")
+					end
+				end)
 	end
 end)
 ----------------------------------------------Sarma----------------------------------------------------------------------------------------------------------------------------------
