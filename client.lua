@@ -8,10 +8,25 @@ Citizen.CreateThread(function()
 		if IsControlJustPressed(1, 38) and IsPedInAnyVehicle(GetPlayerPed(-1), false) ~= 1 then
 			if GetDistanceBetweenCoords(PlayerPos, 2221.7973632813,5577.0966796875,53.844783782959, true) <= 10 then		
 				TaskStartScenarioInPlace(PlayerPedId(), 'world_human_gardener_plant', -1, false)
-				local finished = exports["xx-taskbar"]:taskBar(7500,"Ot Topluyorsun",false,false) 
-				if (finished == 100) then
-					TriggerServerEvent("kcdd_weed:test")
-				end
+				exports['mythic_progbar']:Progress({
+				name = "xxxx",
+				duration = 7500,
+				label = 'Ot Topluyorsun',
+				useWhileDead = false,
+				canCancel = false,
+				controlDisables = {
+					disableMovement = true,
+					disableCarMovement = true,
+					disableMouse = false,
+					disableCombat = true,
+				},
+				}, function(cancelled)
+					if not cancelled then
+						ClearPedTasksImmediately(ped)
+						TriggerServerEvent("kcdd_weed:test")
+					end
+				end)
+
 			end	
 		end
 	end
